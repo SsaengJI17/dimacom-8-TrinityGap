@@ -214,6 +214,110 @@
                 transform: translateY(0);
             }
         }
+
+
+        /* --- Responsive / Portrait Support --- */
+        @media (max-width: 768px), (orientation: portrait) {
+            body {
+                overflow-x: hidden;
+                overflow-y: auto;
+                min-height: 100svh;
+                height: auto;
+                padding: 24px 18px;
+            }
+
+            .intro-container {
+                min-height: calc(100svh - 48px);
+                justify-content: center;
+                gap: 14px;
+            }
+
+            .logo-persistent-wrapper {
+				width: clamp(180px, 50vw, 260px);
+				height: clamp(180px, 50vw, 260px);
+            }
+
+            .text-wrapper {
+                width: min(82vw, 360px);
+                margin-top: 12px;
+            }
+
+            body.mode-explanation .logo-mover {
+                transform: translateY(-110px) scale(0.78);
+            }
+
+            #color-explanation {
+                top: 58%;
+                width: min(90vw, 560px);
+                padding: 0 8px;
+            }
+
+            #color-explanation h2 {
+                font-size: clamp(28px, 8vw, 36px);
+                margin-bottom: 16px;
+            }
+
+            #color-explanation p {
+                font-size: clamp(15px, 4.2vw, 18px);
+                line-height: 1.65;
+                margin-bottom: 28px;
+                word-break: keep-all;
+            }
+
+            .btn-pill {
+                width: min(100%, 320px);
+                padding: 14px 24px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 16px 14px;
+            }
+
+            .logo-persistent-wrapper {
+                width: 128px;
+                height: 128px;
+            }
+
+            .text-wrapper {
+                width: 86vw;
+            }
+
+            body.mode-explanation .logo-mover {
+                transform: translateY(-120px) scale(0.72);
+            }
+
+            #color-explanation {
+                top: 60%;
+            }
+
+            #color-explanation h2 {
+                font-size: 28px;
+            }
+
+            #color-explanation p {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-height: 680px) and (orientation: portrait) {
+            body.mode-explanation .logo-mover {
+                transform: translateY(-128px) scale(0.62);
+            }
+
+            #color-explanation {
+                top: 62%;
+            }
+
+            #color-explanation p {
+                font-size: 14px;
+                line-height: 1.5;
+                margin-bottom: 18px;
+            }
+        }
+
     </style>
 </head>
 
