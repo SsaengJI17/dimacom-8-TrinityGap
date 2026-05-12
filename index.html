@@ -216,51 +216,79 @@
         }
 
 
-        /* --- Responsive / Portrait Support --- */
+        /* --- FINAL MOBILE / PORTRAIT FIX ---
+           세로 화면에서 오프닝 로고/텍스트가 잘리지 않고,
+           설명 화면에서 로고와 문구가 겹치거나 너무 아래로 밀리지 않게 조정합니다.
+        */
         @media (max-width: 768px), (orientation: portrait) {
             body {
                 overflow-x: hidden;
                 overflow-y: auto;
-                min-height: 100svh;
                 height: auto;
-                padding: 24px 18px;
+                min-height: 100svh;
+                padding: 0 18px;
+                align-items: flex-start;
             }
 
             .intro-container {
-                min-height: calc(100svh - 48px);
+                min-height: 100svh;
                 justify-content: center;
-                gap: 14px;
+                gap: 16px;
             }
 
             .logo-persistent-wrapper {
-				width: clamp(180px, 50vw, 260px);
-				height: clamp(180px, 50vw, 260px);
+                width: clamp(150px, 44vw, 210px);
+                height: clamp(150px, 44vw, 210px);
             }
 
             .text-wrapper {
-                width: min(82vw, 360px);
-                margin-top: 12px;
+                width: min(88vw, 340px);
+                margin-top: 14px;
+                overflow: visible;
+            }
+
+            .text-svg {
+                display: block;
+                width: 100%;
+                max-width: 100%;
+                height: auto;
+            }
+
+            body.mode-explanation .intro-container {
+                justify-content: flex-start;
+                padding-top: 9svh;
             }
 
             body.mode-explanation .logo-mover {
-                transform: translateY(-110px) scale(0.78);
+                transform: none;
+                scale: 1;
+                margin-bottom: 18px;
             }
 
-            #color-explanation {
-                top: 58%;
-                width: min(90vw, 560px);
-                padding: 0 8px;
+            body.mode-explanation .logo-persistent-wrapper {
+                width: clamp(145px, 40vw, 190px);
+                height: clamp(145px, 40vw, 190px);
+            }
+
+            body.mode-explanation #color-explanation {
+                position: static;
+                width: 100%;
+                max-width: 620px;
+                padding: 0 4px;
+                opacity: 1;
+                transform: none;
+                pointer-events: auto;
             }
 
             #color-explanation h2 {
-                font-size: clamp(28px, 8vw, 36px);
-                margin-bottom: 16px;
+                font-size: clamp(30px, 8vw, 42px);
+                margin-bottom: 18px;
             }
 
             #color-explanation p {
-                font-size: clamp(15px, 4.2vw, 18px);
+                font-size: clamp(16px, 4.1vw, 20px);
                 line-height: 1.65;
-                margin-bottom: 28px;
+                margin-bottom: 30px;
                 word-break: keep-all;
             }
 
@@ -273,48 +301,61 @@
 
         @media (max-width: 480px) {
             body {
-                padding: 16px 14px;
+                padding: 0 14px;
             }
 
             .logo-persistent-wrapper {
-                width: 128px;
-                height: 128px;
+                width: 170px;
+                height: 170px;
             }
 
             .text-wrapper {
-                width: 86vw;
+                width: 90vw;
+                max-width: 320px;
+            }
+
+            body.mode-explanation .intro-container {
+                padding-top: 7svh;
+            }
+
+            body.mode-explanation .logo-persistent-wrapper {
+                width: 165px;
+                height: 165px;
+            }
+
+            #color-explanation h2 {
+                font-size: 34px;
+            }
+
+            #color-explanation p {
+                font-size: 17px;
+                line-height: 1.6;
+            }
+        }
+
+        @media (max-height: 720px) and (orientation: portrait) {
+            body.mode-explanation .intro-container {
+                padding-top: 4svh;
+            }
+
+            body.mode-explanation .logo-persistent-wrapper {
+                width: 135px;
+                height: 135px;
             }
 
             body.mode-explanation .logo-mover {
-                transform: translateY(-120px) scale(0.72);
-            }
-
-            #color-explanation {
-                top: 60%;
+                margin-bottom: 10px;
             }
 
             #color-explanation h2 {
                 font-size: 28px;
+                margin-bottom: 12px;
             }
 
             #color-explanation p {
                 font-size: 15px;
-            }
-        }
-
-        @media (max-height: 680px) and (orientation: portrait) {
-            body.mode-explanation .logo-mover {
-                transform: translateY(-128px) scale(0.62);
-            }
-
-            #color-explanation {
-                top: 62%;
-            }
-
-            #color-explanation p {
-                font-size: 14px;
-                line-height: 1.5;
-                margin-bottom: 18px;
+                line-height: 1.48;
+                margin-bottom: 20px;
             }
         }
 
