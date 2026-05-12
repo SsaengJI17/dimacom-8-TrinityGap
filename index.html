@@ -359,6 +359,66 @@
             }
         }
 
+
+
+        /* --- PORTRAIT LOGO TRANSITION SMOOTH PATCH ---
+           세로 화면에서 설명 화면으로 넘어갈 때 로고가 순간이동하지 않도록
+           position/static 전환 대신 transform 애니메이션을 유지합니다.
+        */
+        @media (max-width: 768px), (orientation: portrait) {
+            body.mode-explanation .intro-container {
+                justify-content: center;
+                padding-top: 0;
+            }
+
+            body.mode-explanation .logo-mover {
+                transform: translateY(-24svh) scale(0.86);
+                margin-bottom: 0;
+            }
+
+            body.mode-explanation .logo-persistent-wrapper {
+                width: clamp(150px, 44vw, 210px);
+                height: clamp(150px, 44vw, 210px);
+            }
+
+            body.mode-explanation #color-explanation {
+                position: absolute;
+                top: 45%;
+                left: 50%;
+                width: min(92vw, 620px);
+                max-width: 620px;
+                padding: 0 4px;
+                transform: translate(-50%, 0);
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body.mode-explanation .logo-mover {
+                transform: translateY(-23svh) scale(0.82);
+            }
+
+            body.mode-explanation .logo-persistent-wrapper {
+                width: 170px;
+                height: 170px;
+            }
+
+            body.mode-explanation #color-explanation {
+                top: 43%;
+            }
+        }
+
+        @media (max-height: 720px) and (orientation: portrait) {
+            body.mode-explanation .logo-mover {
+                transform: translateY(-21svh) scale(0.72);
+            }
+
+            body.mode-explanation #color-explanation {
+                top: 40%;
+            }
+        }
+
     </style>
 </head>
 
